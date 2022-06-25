@@ -7,78 +7,65 @@ cp -rp artifact www/
 
 ```
 npm install -g cordova
-cordova platform add android
+cordova platform add ios
 ```
 
-# Install Android Development Tools
+# Install iOS Development Tools
 
-## Java Development Kit (JDK)
+[REF](https://cordova.apache.org/docs/en/11.x/guide/platforms/ios/index.html)
 
+First Install xcode from AppStore.
+
+For TLDR;
+
+```sh
+xcode-select --install
+brew install ios-deploy
+sudo gem install cocoapods
 ```
-brew tap adoptopenjdk/openjdk
-brew install --cask adoptopenjdk8
-```
 
-## Gradle
-
-```
-brew install gradle
-```
-
-## Android SDK
-
-1. Install [Android Studio](https://developer.android.com/studio/index.html)
-2. Adding SDK Packages
-
-    Open the Android SDK Manager (Tools > SDK Manager in Android Studio, or sdkmanager on the command line), and make sure the following are installed:
-
-   - Android Platform SDK for your targeted version of Android
-
-   - Android SDK build-tools version 29.0.2 or higher
-
-    Open the Android Studio SDK Manager
-
-    1. In the Android SDK Tools tab, uncheck Hide Obsolete Packages
-    
-    2. Check Android SDK Tools (Obsolete)
-
-## Setting environment variables
-1. Set the JAVA_HOME environment variable to the location of your JDK installation
-2. Set the ANDROID_SDK_ROOT environment variable to the location of your Android SDK installation
-3. It is also recommended that you add the Android SDK's tools, emulator and platform-tools directories to your PATH
-
-```bash:
-export JAVA_HOME=<java-location>
-export ANDROID_SDK_ROOT=<sdk-location>
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator/
-```
 # Check
+
 In the cordova project directory, run
+
 ```
 cordova requirements
 ```
+
 If you have successfully installed all the required tools above, the result should be like:
+
 ```
-Requirements check results for android:
-Java JDK: installed 1.8.0
-Android SDK: installed true
-Android target: installed android-32,android-30,android-29
-Gradle: installed /usr/local/Cellar/gradle/7.4/bin/gradle
+Requirements check results for ios:
+Apple macOS: installed darwin
+Xcode: installed 13.4.1
+ios-deploy: installed 1.11.4
+CocoaPods: installed 1.11.3
 ```
+
+## xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instanc
+
+- Start Xcode.
+- Open [Xcode] -> [Preferences] in the menu.
+- Select Locations.
+- The [Command line Tools:] list box was blank. This is the cause, so click and select the Xcode xx.x that appears.
 
 # Build
-```
-cordova build
-```
-# Test in Emulator
-1. Create a Device
 
-    Android Studio - Virturl Device Manager - Create Device
-2. Run App
 ```
-cordova run android --emulator
+cordova build ios
+```
+
+## Continue in xcode
+
+open platforms/ios/Pawket.xcworkspace/
+
+## Modify code
+
+Target: /platforms/ios/CordovaLib/Classes/Public/CDVURLSchemeHandler.m
+
+```diff
+-        return contentType ? contentType : @"application/octet-stream";
++        return contentType ? contentType : [fileExtension isEqualToString:@"wasm"] ? @"application/wasm" : @"application/octet-stream";
 ```
 
 # Release
@@ -86,5 +73,3 @@ cordova run android --emulator
 1. Modify version in `config.xml`.
 2. Replace files in `www\` with latest package download from [Azure Devops Pipelines](https://dev.azure.com/sututech/Chia/_build?definitionId=43&_a=summary).
 3. Build release with `yarn build:release`.
-4. Upload aab package to [Google Play Console](https://play.google.com/console/u/0/developers/4723266972324399816/app/4972761195466309737/tracks/4701725921608018730/releases/1/prepare)
-5. Download `Signed, universal API` from app bundle.

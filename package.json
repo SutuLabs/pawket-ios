@@ -2,13 +2,10 @@
   "name": "com.pawket.wallet",
   "displayName": "Pawket",
   "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "description": "Pawket iOS",
   "main": "index.js",
   "scripts": {
-    "keygen:path:windows": "PATH=$PATH:/c/Program\\ Files/Android/Android\\ Studio/jre/bin/",
-    "keygen": "keytool -genkey -v -keystore my-release-key.keystore -alias pawket_release -keyalg RSA -keysize 2048 -validity 10000",
-    "run:android": "cordova run android --device",
-    "build:release": "cordova platform update android && cordova build android --release -- --keystore=my-release-key.keystore --alias=pawket_release --storePassword=pawket --password=pawket"
+    "build:release": "cordova platform update ios && cordova build ios --release"
   },
   "keywords": [
     "ecosystem:cordova"
@@ -17,11 +14,11 @@
   "license": "Apache-2.0",
   "cordova": {
     "platforms": [
-      "android"
+      "ios"
     ],
     "plugins": {}
   },
   "devDependencies": {
-    "cordova-android": "^10.1.2"
+    "cordova-ios": "^6.2.0"
   }
 }
