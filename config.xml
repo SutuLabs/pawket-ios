@@ -12,7 +12,13 @@
     <allow-intent href="https://*/*" />
     <preference name="scheme" value="app" />
     <preference name="hostname" value="localhost"/>
+    <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
+        <string>Pawket requires access to your phone's camera</string>
+    </config-file>
     <config-file parent="UIUserInterfaceStyle" platform="ios" target="*-Info.plist">
         <string>Light</string>
+    </config-file>
+    <config-file parent="ITSAppUsesNonExemptEncryption" platform="ios" target="*-Info.plist">
+        <false/>
     </config-file>
 </widget>
