@@ -71,5 +71,6 @@ Target: /platforms/ios/CordovaLib/Classes/Public/CDVURLSchemeHandler.m
 # Release
 
 1. Modify version in `config.xml`.
-2. Replace files in `www\` with latest package download from [Azure Devops Pipelines](https://dev.azure.com/sututech/Chia/_build?definitionId=43&_a=summary).
+2. Replace files in `platforms/ios/www/` with latest package download from [Azure Devops Pipelines](https://dev.azure.com/sututech/Chia/_build?definitionId=43&_a=summary).
+    Alert: `cordova.js` and `cordova-js-src` should remain
 3. Build release with `yarn build:release`.
