@@ -68,9 +68,25 @@ Target: /platforms/ios/CordovaLib/Classes/Public/CDVURLSchemeHandler.m
 +        return contentType ? contentType : [fileExtension isEqualToString:@"wasm"] ? @"application/wasm" : @"application/octet-stream";
 ```
 
+Target: /platforms/ios/CordovaLib/Classes/Private/Plugins/CDVWebViewEngine/CDVWebViewEngine.m
+
+```diff
+-    wkWebView.allowsBackForwardNavigationGestures = [settings cordovaBoolSettingForKey:@"AllowBackForwardNavigationGestures" defaultValue:NO];
++    wkWebView.allowsBackForwardNavigationGestures = [settings cordovaBoolSettingForKey:@"AllowBackForwardNavigationGestures" defaultValue:YES];
+```
+
+
 # Release
 
 1. Modify version in `config.xml`.
 2. Replace files in `platforms/ios/www/` with latest package download from [Azure Devops Pipelines](https://dev.azure.com/sututech/Chia/_build?definitionId=43&_a=summary).
     Alert: `cordova.js` and `cordova-js-src` should remain
 3. Build release with `yarn build:release`.
+
+
+# Incremental Release
+
+1. Replace files in `platforms/ios/www/` with latest package download from [Azure Devops Pipelines](https://dev.azure.com/sututech/Chia/_build?definitionId=43&_a=summary).
+    Alert: `cordova.js` and `cordova-js-src` should remain, copy from /www-backup if accidently deleted
+2. Change version under xCode: Project Root -> General -> Verion/Build
+3. Change target to `Any iOS Device`, then: Product -> Archive
