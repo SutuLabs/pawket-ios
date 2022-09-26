@@ -88,5 +88,5 @@ Target: /platforms/ios/CordovaLib/Classes/Private/Plugins/CDVWebViewEngine/CDVWe
 
 1. Replace files in `platforms/ios/www/` with latest package download from [Azure Devops Pipelines](https://dev.azure.com/sututech/Chia/_build?definitionId=43&_a=summary).
     Alert: `cordova.js` and `cordova-js-src` should remain, copy from /www-backup if accidently deleted
-2. Change version under xCode: Project Root -> General -> Verion/Build
+2. Change version under xCode: Project Root -> General -> Targets -> Pawket -> Version/Build
 3. Change target to `Any iOS Device`, then: Product -> Archive
