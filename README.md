@@ -75,6 +75,10 @@ Target: /platforms/ios/CordovaLib/Classes/Private/Plugins/CDVWebViewEngine/CDVWe
 +    wkWebView.allowsBackForwardNavigationGestures = [settings cordovaBoolSettingForKey:@"AllowBackForwardNavigationGestures" defaultValue:YES];
 ```
 
+# Signing
+
+- https://developer.apple.com/forums/thread/47806
+- https://help.apple.com/developer-account/#/devbfa00fef7
 
 # Release
 
