@@ -4,8 +4,8 @@
     <icon src="icon.png" platform="android" width="57" height="57" density="mdpi" />
     <icon src="icon.png" platform="ios" width="57" height="57" density="mdpi" />
     <description>An open-source and secure offline wallet for Chia</description>
-    <author email="chiabee@sutu.tech" href="https://www.pawket.app/">
-        Chiabee Team
+    <author email="support@sutu.tech" href="https://www.pawket.app/">
+        Sutu Labs
     </author>
     <content src="index.html" />
     <allow-intent href="http://*/*" />
