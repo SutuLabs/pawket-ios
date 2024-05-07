@@ -94,3 +94,12 @@ Target: /platforms/ios/CordovaLib/Classes/Private/Plugins/CDVWebViewEngine/CDVWe
     Alert: `cordova.js` and `cordova-js-src` should remain, copy from /www-backup if accidently deleted
 2. Change version under xCode: Project Root -> General -> Targets -> Pawket -> Version/Build
 3. Change target to `Any iOS Device`, then: Product -> Archive
+
+# Information
+
+- Legacy App
+    - Name: Shuang Liang
+    - BundleId: com.icerdesign.pawket
+- Sutu App
+    - Name: Shanghai Sutu Tech...
+    - BundleId: com.sutulabs.pawket
